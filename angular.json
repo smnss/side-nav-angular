@@ -153,6 +153,76 @@
           }
         }
       }
+    },
+    "deviceMgmt": {
+      "root": "projects/device-mgmt",
+      "sourceRoot": "projects/device-mgmt/src",
+      "projectType": "library",
+      "prefix": "deviceMgmt",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/device-mgmt/tsconfig.lib.json",
+            "project": "projects/device-mgmt/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/device-mgmt/src/test.ts",
+            "tsConfig": "projects/device-mgmt/tsconfig.spec.json",
+            "karmaConfig": "projects/device-mgmt/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/device-mgmt/tsconfig.lib.json",
+              "projects/device-mgmt/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "patchMgmt": {
+      "root": "projects/patch-mgmt",
+      "sourceRoot": "projects/patch-mgmt/src",
+      "projectType": "library",
+      "prefix": "patchMgmt",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/patch-mgmt/tsconfig.lib.json",
+            "project": "projects/patch-mgmt/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/patch-mgmt/src/test.ts",
+            "tsConfig": "projects/patch-mgmt/tsconfig.spec.json",
+            "karmaConfig": "projects/patch-mgmt/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/patch-mgmt/tsconfig.lib.json",
+              "projects/patch-mgmt/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "careAllInOne"

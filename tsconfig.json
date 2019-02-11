@@ -17,6 +17,20 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "device-mgmt": [
+        "dist/device-mgmt"
+      ],
+      "device-mgmt/*": [
+        "dist/device-mgmt/*"
+      ],
+      "patch-mgmt": [
+        "dist/patch-mgmt"
+      ],
+      "patch-mgmt/*": [
+        "dist/patch-mgmt/*"
+      ]
+    }
   }
 }
