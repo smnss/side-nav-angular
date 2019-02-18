@@ -1,0 +1,203 @@
+import {
+  Component,
+  OnDestroy,
+  ChangeDetectorRef,
+  ViewChild,
+  AfterViewInit,
+  ElementRef,
+  OnInit,
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSidenav, VERSION } from '@angular/material';
+import { sideNavAnimation, sideNavContainerAnimation } from './sidenav.component';
+import { MenuItem } from './menu-list/menu-item';
+import { MenuService } from './menu-list/menu.service';
+import { sessionKey, SessionService } from './utilities/session/session.service';
+import { Observable } from 'rxjs';
+import { HttpService } from './utilities/http/http.service';
+import { SnotifyService } from 'ng-snotify';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less'],
+  animations: [sideNavAnimation, sideNavContainerAnimation],
+})
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+  title = 'care All-In-One';
+  @ViewChild('snav') sidenav: MatSidenav;
+  mobileQuery: MediaQueryList;
+
+  fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
+
+  isOpen = false;
+  isLoggedIn: boolean;
+
+  @ViewChild('appDrawer') appDrawer: ElementRef;
+  version = VERSION;
+  navItems: MenuItem[] = [
+    {
+      displayName: 'Device Management',
+      iconName: 'device_hub',
+      route: 'devfestfl',
+      children: [
+        {
+          displayName: 'User Facility',
+          iconName: 'account_balance',
+          route: 'devfestfl/speakers',
+        },
+        {
+          displayName: 'Device Types',
+          iconName: 'dvr',
+          route: 'devfestfl/sessions',
+        },
+        {
+          displayName: 'Devices',
+          iconName: 'devices',
+          route: 'devfestfl/feedback'
+        },
+        {
+          displayName: 'Facility',
+          iconName: 'mobile_friendly',
+          route: 'devfestfl/feedback'
+        },
+        {
+          displayName: 'Facility Mapping',
+          iconName: 'all_inclusive',
+          route: 'devfestfl/feedback'
+        },
+      ]
+    },
+    {
+      displayName: 'Administration',
+      iconName: 'card_travel',
+      children: [
+        {
+          displayName: 'User Management',
+          iconName: 'group',
+        },
+        {
+          displayName: 'Company Management',
+          iconName: 'domain'
+        },
+        {
+          displayName: 'Roles and Permissions',
+          iconName: 'share',
+          route: 'feedback'
+        },
+        {
+          displayName: 'Product and services',
+          iconName: 'poll',
+          route: 'feedback'
+        },
+        {
+          displayName: 'Settings Management',
+          iconName: 'settings_system_daydream',
+          route: 'feedback'
+        }
+      ]
+    },
+    {
+      displayName: 'Patch Management',
+      iconName: 'loupe',
+      children: [
+        {
+          displayName: 'Manage Patch',
+          iconName: 'person'
+        },
+        {
+          displayName: 'Patch History',
+          iconName: 'history'
+        },
+        {
+          displayName: 'RollOut',
+          iconName: 'people_outline',
+          route: 'feedback'
+        },
+        {
+          displayName: 'RollOut Approval',
+          iconName: 'check_box',
+          route: 'feedback'
+        },
+        {
+          displayName: 'Device Module',
+          iconName: 'devices_other',
+          route: 'feedback'
+        },
+        {
+          displayName: 'Device Management',
+          iconName: 'device_hub',
+          route: 'feedback'
+        },
+        {
+          displayName: 'Settings',
+          iconName: 'settings_system_daydream',
+          route: 'feedback'
+        }
+
+      ]
+    },
+  ];
+
+  // tslint:disable-next-line:variable-name
+  private _mobileQueryListener: () => void;
+
+  constructor(
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher,
+    private navService: MenuService,
+    private sessionService: SessionService,
+    private httpService: HttpService,
+    private snotifyService: SnotifyService
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => {
+      if (this.mobileQuery.matches) {
+        this.closeSideNav();
+      } else {
+        this.openSideNav();
+      }
+      return changeDetectorRef.detectChanges();
+    };
+    this.mobileQuery.addListener(this._mobileQueryListener);
+    this.sessionService.currentSessionKey.subscribe(sessionLoggedName => {
+      if (sessionLoggedName) {
+        this.isLoggedIn = true;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    if (this.sessionService.getLoginName()) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  ngAfterViewInit() {
+    this.navService.appDrawer = this.appDrawer;
+  }
+
+  toggleSideNav() {
+    this.isOpen = !this.isOpen;
+  }
+  openSideNav() {
+    this.sidenav.open();
+  }
+  closeSideNav() {
+    this.sidenav.close();
+  }
+  testmethod() {
+    this.httpService.read('').subscribe(res => {
+    });
+  }
+}

@@ -1,0 +1,49 @@
+import { Component, OnInit } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
+import { FeatureService } from '../feature-service.service';
+
+@Component({
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.less']
+})
+export class ResetPasswordComponent implements OnInit {
+
+  getQuestion: boolean = false;
+  question; userData; userDomainName; userloginName; userLoginID; userEmail; urlprotocol;
+  urlhost; getUrl; code;
+  username = new FormControl('', [Validators.required]);
+  domain = new FormControl('', [Validators.required]);
+  answer = new FormControl('', [Validators.required]);
+
+  constructor(private featureService: FeatureService) { }
+
+  getSecurityQuestion() {
+    this.featureService.getSecurityQuestion(this.username.value, this.domain.value).subscribe(data => {
+       this.question = data.body.name;
+       this.getQuestion = true;
+      });
+  }
+
+  resetPassword() {
+    this.featureService.getSecurityAnswerValidate(this.username.value, this.domain.value, btoa(this.answer.value)).subscribe(data => {
+       if (data == "true") {
+          this.featureService.getFetchUsers(this.username.value, this.domain.value).subscribe(data => {
+          this.userData = data.body;
+          this.userDomainName = this.userData.company.domainName;
+          this.userloginName = this.userData.loginName;
+          // this.userLoginID = encodeURIComponent(this.userloginName + '#@#' + this.userDomainName);
+          // this.userEmail = this.userData.email;
+          // this.urlprotocol = $location.protocol();
+          // this.urlhost = $location.host();
+          // this.getUrl = this.urlprotocol+'://'+this.urlhost+':83/admin-ui/PasswordResetServlet?code='
+          // this.code = btoa(this.getUrl);
+        });
+       }
+    });
+  }
+
+  ngOnInit() {
+  }
+
+}

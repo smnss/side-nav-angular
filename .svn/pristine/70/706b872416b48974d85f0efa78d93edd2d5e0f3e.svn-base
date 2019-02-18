@@ -1,0 +1,29 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './features/login/login.component';
+import { AuthGuard } from './utilities/guard/auth.guard';
+import { ResetPasswordComponent } from './features/reset-password/reset-password.component';
+
+const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'resetPassword',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'home',
+    canActivate: [AuthGuard],
+    component: DashboardComponent,
+  },
+];
+
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

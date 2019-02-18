@@ -1,0 +1,79 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'device',
+    pathMatch: 'full',
+  },
+  {
+    path: 'device',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          'app/features/device-mgmt/device/device.module#DeviceModule',
+      },
+    ]
+  },
+  {
+    path: 'device-type',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          'app/features/device-mgmt/device-type/device-type.module#DeviceTypeModule',
+      },
+    ]
+  },
+  {
+    path: 'facility',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          'app/features/device-mgmt/facility/facility.module#FacilityModule',
+      },
+    ]
+  },
+  {
+    path: 'facility-mapping',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          'app/features/device-mgmt/facility-mapping/facility-mapping.module#FacilityMappingModule',
+      },
+    ]
+  },
+  {
+    path: 'user-facility',
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          'app/features/device-mgmt/user-facility/user-facility.module#UserFacilityModule',
+      },
+    ]
+  }
+];
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class DeviceRoutingModule { }

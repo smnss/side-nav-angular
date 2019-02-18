@@ -1,0 +1,25 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { DeviceViewComponent } from './device-view/device-view.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'device-view',
+    pathMatch: 'full',
+  },
+  {
+    path: 'device-view',
+    component: DeviceViewComponent,
+  },
+  ];
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ]
+})
+export class UserFacilityRoutingModule { }

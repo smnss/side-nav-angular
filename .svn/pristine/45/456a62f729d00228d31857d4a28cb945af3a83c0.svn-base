@@ -1,0 +1,12 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CompanyListComponent } from './company-list/company-list.component';
+import { CompanyManageComponent } from './company-manage/company-manage.component';
+
+@NgModule({
+  declarations: [CompanyListComponent, CompanyManageComponent],
+  imports: [
+    CommonModule
+  ]
+})
+export class CompanyModule { }

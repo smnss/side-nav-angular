@@ -1,0 +1,115 @@
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><b>Facility</b></li>
+	<li class="breadcrumb-item active">Manage Facility</li>
+</ol>
+<div class="card mb-3">
+	<div class="card-header" style="font-weight: bold;">Add New
+		Facility</div>
+
+	<div class="card-body">
+		<div class="custom-card card-body">
+			<form name="facilityadd" action="#">
+				<div class="form-group">
+					<label for="name" style="font-weight: bold;">Name</label> <input
+						class="form-control" id="name" style="width: 100%;" type="text"
+						aria-describedby="emailHelp" placeholder="Enter Facility Name">
+				</div>
+				<div class="form-group">
+					<label for="description" style="font-weight: bold;">Description</label>
+					<input class="form-control" id="description" style="width: 100%;"
+						type="text" aria-describedby="emailHelp"
+						placeholder="Enter Facility Description">
+				</div>
+				<div class="form-group">
+					<label for="shortName" style="font-weight: bold;">Short
+						Name</label> <label for="shortName" style="color: red;">(Max. 4
+						Characters)</label> <input class="form-control" id="shortName"
+						style="width: 100%;" type="text" aria-describedby="emailHelp"
+						maxlength="4" placeholder="Enter Facility Short Name">
+				</div>
+
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<label for="address1" style="font-weight: bold;">Address
+								Line 1</label> <input class="form-control" id="address1"
+								style="width: 100%;" type="text" aria-describedby="emailHelp"
+								placeholder="Enter Facility Address Line 1">
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<label for="address2" style="font-weight: bold;">Address
+								Line 2</label> <input class="form-control" id="address2"
+								style="width: 100%;" type="text" aria-describedby="emailHelp"
+								placeholder="Enter Facility Address Line 2">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<label for="address3" style="font-weight: bold;">Address
+								Line 3</label> <input class="form-control" id="address3"
+								style="width: 100%;" type="text" aria-describedby="emailHelp"
+								placeholder="Enter Facility Address Line 3">
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group">
+							<label for="zipcode" style="font-weight: bold;">Zip Code</label>
+							<input class="form-control" id="zipcode" style="width: 100%;"
+								type="text" aria-describedby="emailHelp"
+								placeholder="Enter Facility Zip Code">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="image" style="font-weight: bold;">Image
+						Reference</label> <input class="form-control" id="image"
+						style="width: 100%;" type="text" aria-describedby="emailHelp"
+						placeholder="Enter Facility Image Reference">
+				</div>
+
+				<div class="form-group">
+					<label for="geoCoordinates" style="font-weight: bold;">Geo-coordinates</label>
+					<input class="form-control" id="geoCoordinates"
+						style="width: 100%;" type="text" aria-describedby="emailHelp"
+						placeholder="Enter Facility Geo-coordinates">
+				</div>
+
+				<div class="form-group">
+					<label for="type" style="font-weight: bold;">Type</label> <input
+						class="form-control" id="type" style="width: 100%;" type="text"
+						aria-describedby="emailHelp" placeholder="Enter Facility type">
+				</div>
+
+				<div class="form-group">
+					<label for="parentFacility" style="font-weight: bold;">Parent
+						Facility</label> <select class="form-control" name="parentFacility"
+						id="parentFacility"><option value="">Fetching
+							Facilities. Please wait.</option>
+					</select>
+				</div>
+
+				<br /> <br />
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group" id="GeneratedElement_2">
+							<button type="button" class="btn btn-primary btn-block"
+								onclick="" id="submit" name="submit">Add</button>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group" id="GeneratedElement_3">
+							<button type="reset" class="btn btn-default control-label"
+								name="reset">Reset</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

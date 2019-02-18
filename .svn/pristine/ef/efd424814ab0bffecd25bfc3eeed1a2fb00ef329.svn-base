@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
+import { HttpService } from 'src/app/utilities/http/http.service';
+import { FeatureService } from '../feature-service.service';
+import {Router } from '@angular/router';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.less']
+})
+export class LoginComponent implements OnInit {
+  public loginParameter: string;
+
+  username = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required]);
+  domain = new FormControl('', [Validators.required]);
+
+  constructor(private featureService: FeatureService, private router: Router) { }
+
+  loginSubmit() {
+    console.log('loginSubmit');
+    this.loginParameter = 'j_username=' + this.username.value + '&j_password=' + this.password.value + '&org=' + this.domain.value;
+    this.featureService.getLogin(this.loginParameter).subscribe(data => {
+      console.log(data); }
+      );
+    // if () {
+      // this.router.navigate(['home']);
+    // }
+  }
+
+  ngOnInit() {
+  }
+
+}

@@ -1,0 +1,92 @@
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><b><a href="#" onclick="handleMenuClick('devicetype-grid')">Device Types</a></b></li>
+	<li class="breadcrumb-item active">Manage Device Type</li>
+</ol>
+<div class="card mb-3">
+	<div class="card-header" style="font-weight: bold;">Add New
+		Device Type</div>
+	<div class="card-body">
+		<div class="custom-card card-body">
+			<form name="deviceadd" action="#">
+				<div class="form-group">
+					<label for="name" style="font-weight: bold;">Name</label> <input
+						class="form-control" id="name" style="width: 100%;" type="text"
+						aria-describedby="emailHelp" placeholder="Enter Device Name">
+				</div>
+				<div class="form-group">
+					<label for="name" style="font-weight: bold;">Description</label> <input
+						class="form-control" id="description" style="width: 100%;"
+						type="text" aria-describedby="emailHelp"
+						placeholder="Enter Device Description" />
+				</div>
+				<div class="form-group">
+					<label for="name" style="font-weight: bold;">Parent Device Type</label> <select
+						class="form-control" name="devicetype" id="devicetype"><option
+							value="">Fetching Device Types. Please wait.</option>
+					</select>
+				</div>
+				<div>
+					<div class="card-header" style="font-weight: bold; border: black;">Device
+						Attributes</div>
+					<div class="card-body">
+						<div class="custom-card card-body">
+
+							<div class="table-responsive">
+								<table class="table table-bordered" id="device-attributes-table"
+									width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>Description</th>
+											<th>Value</th>
+											<th>Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><input class="form-control" id="attrname1"
+												style="width: 100%;" type="text"
+												aria-describedby="emailHelp"
+												placeholder="Enter Attribute Name"></td>
+											<td><input class="form-control" id="attrdesc1"
+												style="width: 100%;" type="text"
+												aria-describedby="emailHelp"
+												placeholder="Enter Attribute Desc"></td>
+											<td><input class="form-control" id="attrvalue1"
+												style="width: 100%;" type="text"
+												aria-describedby="emailHelp"
+												placeholder="Enter Attribute Value"></td>
+											<td>
+												<div>
+													<a href='#' onclick='' id="addRow"><i
+														class='fa fa-fw fa-plus' title='Add Attribute'></i></a> <a
+														href='#' onclick=''><i class='fa fa-fw fa-remove'
+														style="color: red;" title='Delete Attribute'></i></a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br /> <br />
+				<div class="row">
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group" id="GeneratedElement_2">
+							<button type="button" class="btn btn-primary btn-block"
+								onclick="" id="submit" name="submit">Add</button>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+						<div class="form-group" id="GeneratedElement_3">
+							<button type="reset" class="btn btn-default control-label"
+								name="reset">Reset</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

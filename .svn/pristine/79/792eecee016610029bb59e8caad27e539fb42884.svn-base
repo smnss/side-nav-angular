@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ConfigService {
+
+  private static configPath = 'https://jsonplaceholder.typicode.com/todos333/1';
+
+  constructor(private http: HttpClient) {}
+
+  private getConfigPath(): string {
+    if (!ConfigService.configPath) {
+      ConfigService.configPath = environment.config;
+    }
+    return ConfigService.configPath;
+  }
+
+  getConfig(): string {
+  //  return this.http.get(this.getConfigPath());
+  return ConfigService.configPath;
+  }
+}

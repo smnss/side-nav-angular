@@ -1,0 +1,415 @@
+import { Component, OnDestroy, ChangeDetectorRef, ViewChild, AfterViewInit, ElementRef, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { MatSidenav, VERSION } from '@angular/material';
+import { sideNavAnimation, sideNavContainerAnimation } from './sidenav.component';
+import { MenuItem } from './menu-list/menu-item';
+import { MenuService } from './menu-list/menu.service';
+import { sessionKey, SessionService } from './utilities/session/session.service';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.less'],
+  animations: [sideNavAnimation, sideNavContainerAnimation]
+})
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+  title = 'careAllInOne';
+  @ViewChild('snav') sidenav: MatSidenav;
+  mobileQuery: MediaQueryList;
+
+  fillerNav = Array.from({length: 5}, (_, i) => `Nav Item ${i + 1}`);
+
+  isOpen = true;
+  isLoggedIn: boolean;
+
+  @ViewChild('appDrawer') appDrawer: ElementRef;
+  version = VERSION;
+  navItems: MenuItem[] = [
+    {
+      displayName: 'DevFestFL',
+      iconName: 'recent_actors',
+      route: 'devfestfl',
+      children: [
+        {
+          displayName: 'Speakers',
+          iconName: 'group',
+          route: 'devfestfl/speakers',
+          children: [
+            {
+              displayName: 'Michael Prentice',
+              iconName: 'person',
+              route: 'devfestfl/speakers/michael-prentice',
+              children: [
+                {
+                  displayName: 'Create Enterprise UIs',
+                  iconName: 'star_rate',
+                  route: 'devfestfl/speakers/michael-prentice/material-design'
+                }
+              ]
+            },
+            {
+              displayName: 'Stephen Fluin',
+              iconName: 'person',
+              route: 'devfestfl/speakers/stephen-fluin',
+              children: [
+                {
+                  displayName: 'What\'s up with the Web?',
+                  iconName: 'star_rate',
+                  route: 'devfestfl/speakers/stephen-fluin/what-up-web'
+                }
+              ]
+            },
+            {
+              displayName: 'Mike Brocchi',
+              iconName: 'person',
+              route: 'devfestfl/speakers/mike-brocchi',
+              children: [
+                {
+                  displayName: 'My ally, the CLI',
+                  iconName: 'star_rate',
+                  route: 'devfestfl/speakers/mike-brocchi/my-ally-cli'
+                },
+                {
+                  displayName: 'Become an Angular Tailor',
+                  iconName: 'star_rate',
+                  route: 'devfestfl/speakers/mike-brocchi/become-angular-tailer'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          displayName: 'Sessions',
+          iconName: 'speaker_notes',
+          route: 'devfestfl/sessions',
+          children: [
+            {
+              displayName: 'Create Enterprise UIs',
+              iconName: 'star_rate',
+              route: 'devfestfl/sessions/material-design'
+            },
+            {
+              displayName: 'What\'s up with the Web?',
+              iconName: 'star_rate',
+              route: 'devfestfl/sessions/what-up-web'
+            },
+            {
+              displayName: 'My ally, the CLI',
+              iconName: 'star_rate',
+              route: 'devfestfl/sessions/my-ally-cli'
+            },
+            {
+              displayName: 'Become an Angular Tailor',
+              iconName: 'star_rate',
+              route: 'devfestfl/sessions/become-angular-tailer'
+            }
+          ]
+        },
+        {
+          displayName: 'Feedback',
+          iconName: 'feedback',
+          route: 'devfestfl/feedback'
+        }
+      ]
+    },
+    {
+      displayName: 'Disney',
+      iconName: 'videocam',
+      children: [
+        {
+          displayName: 'Speakers',
+          iconName: 'group',
+          children: [
+            {
+              displayName: 'Michael Prentice',
+              iconName: 'person',
+              route: 'michael-prentice',
+              children: [
+                {
+                  displayName: 'Create Enterprise UIs',
+                  iconName: 'star_rate',
+                  route: 'material-design'
+                }
+              ]
+            },
+            {
+              displayName: 'Stephen Fluin',
+              iconName: 'person',
+              route: 'stephen-fluin',
+              children: [
+                {
+                  displayName: 'What\'s up with the Web?',
+                  iconName: 'star_rate',
+                  route: 'what-up-web'
+                }
+              ]
+            },
+            {
+              displayName: 'Mike Brocchi',
+              iconName: 'person',
+              route: 'mike-brocchi',
+              children: [
+                {
+                  displayName: 'My ally, the CLI',
+                  iconName: 'star_rate',
+                  route: 'my-ally-cli'
+                },
+                {
+                  displayName: 'Become an Angular Tailor',
+                  iconName: 'star_rate',
+                  route: 'become-angular-tailer'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          displayName: 'Sessions',
+          iconName: 'speaker_notes',
+          children: [
+            {
+              displayName: 'Create Enterprise UIs',
+              iconName: 'star_rate',
+              route: 'material-design'
+            },
+            {
+              displayName: 'What\'s up with the Web?',
+              iconName: 'star_rate',
+              route: 'what-up-web'
+            },
+            {
+              displayName: 'My ally, the CLI',
+              iconName: 'star_rate',
+              route: 'my-ally-cli'
+            },
+            {
+              displayName: 'Become an Angular Tailor',
+              iconName: 'star_rate',
+              route: 'become-angular-tailer'
+            }
+          ]
+        },
+        {
+          displayName: 'Feedback',
+          iconName: 'feedback',
+          route: 'feedback'
+        }
+      ]
+    },
+    {
+      displayName: 'Orlando',
+      iconName: 'movie_filter',
+      children: [
+        {
+          displayName: 'Speakers',
+          iconName: 'group',
+          children: [
+            {
+              displayName: 'Michael Prentice',
+              iconName: 'person',
+              route: 'michael-prentice',
+              children: [
+                {
+                  displayName: 'Create Enterprise UIs',
+                  iconName: 'star_rate',
+                  route: 'material-design'
+                }
+              ]
+            },
+            {
+              displayName: 'Stephen Fluin',
+              iconName: 'person',
+              route: 'stephen-fluin',
+              children: [
+                {
+                  displayName: 'What\'s up with the Web?',
+                  iconName: 'star_rate',
+                  route: 'what-up-web'
+                }
+              ]
+            },
+            {
+              displayName: 'Mike Brocchi',
+              iconName: 'person',
+              route: 'mike-brocchi',
+              children: [
+                {
+                  displayName: 'My ally, the CLI',
+                  iconName: 'star_rate',
+                  route: 'my-ally-cli'
+                },
+                {
+                  displayName: 'Become an Angular Tailor',
+                  iconName: 'star_rate',
+                  route: 'become-angular-tailer'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          displayName: 'Sessions',
+          iconName: 'speaker_notes',
+          children: [
+            {
+              displayName: 'Create Enterprise UIs',
+              iconName: 'star_rate',
+              route: 'material-design'
+            },
+            {
+              displayName: 'What\'s up with the Web?',
+              iconName: 'star_rate',
+              route: 'what-up-web'
+            },
+            {
+              displayName: 'My ally, the CLI',
+              iconName: 'star_rate',
+              route: 'my-ally-cli'
+            },
+            {
+              displayName: 'Become an Angular Tailor',
+              iconName: 'star_rate',
+              route: 'become-angular-tailer'
+            }
+          ]
+        },
+        {
+          displayName: 'Feedback',
+          iconName: 'feedback',
+          route: 'feedback'
+        }
+      ]
+    },
+    {
+      displayName: 'Maleficent',
+      disabled: true,
+      iconName: 'report_problem',
+      children: [
+        {
+          displayName: 'Speakers',
+          iconName: 'group',
+          children: [
+            {
+              displayName: 'Michael Prentice',
+              iconName: 'person',
+              route: 'michael-prentice',
+              children: [
+                {
+                  displayName: 'Create Enterprise UIs',
+                  iconName: 'star_rate',
+                  route: 'material-design'
+                }
+              ]
+            },
+            {
+              displayName: 'Stephen Fluin',
+              iconName: 'person',
+              route: 'stephen-fluin',
+              children: [
+                {
+                  displayName: 'What\'s up with the Web?',
+                  iconName: 'star_rate',
+                  route: 'what-up-web'
+                }
+              ]
+            },
+            {
+              displayName: 'Mike Brocchi',
+              iconName: 'person',
+              route: 'mike-brocchi',
+              children: [
+                {
+                  displayName: 'My ally, the CLI',
+                  iconName: 'star_rate',
+                  route: 'my-ally-cli'
+                },
+                {
+                  displayName: 'Become an Angular Tailor',
+                  iconName: 'star_rate',
+                  route: 'become-angular-tailer'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          displayName: 'Sessions',
+          iconName: 'speaker_notes',
+          children: [
+            {
+              displayName: 'Create Enterprise UIs',
+              iconName: 'star_rate',
+              route: 'material-design'
+            },
+            {
+              displayName: 'What\'s up with the Web?',
+              iconName: 'star_rate',
+              route: 'what-up-web'
+            },
+            {
+              displayName: 'My ally, the CLI',
+              iconName: 'star_rate',
+              route: 'my-ally-cli'
+            },
+            {
+              displayName: 'Become an Angular Tailor',
+              iconName: 'star_rate',
+              route: 'become-angular-tailer'
+            }
+          ]
+        },
+        {
+          displayName: 'Feedback',
+          iconName: 'feedback',
+          route: 'feedback'
+        }
+      ]
+    }
+  ];
+
+
+  // tslint:disable-next-line:variable-name
+  private _mobileQueryListener: () => void;
+
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private navService: MenuService,
+              private sessionService: SessionService) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => {
+      if (this.mobileQuery.matches) {
+        this.closeSideNav();
+      } else {
+        this.openSideNav();
+      }
+      return changeDetectorRef.detectChanges();
+    };
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnInit(): void {
+    if (this.sessionService.getLoginId()) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  ngAfterViewInit() {
+    this.navService.appDrawer = this.appDrawer;
+  }
+
+  toggleSideNav() {
+     this.isOpen = !this.isOpen;
+   }
+   openSideNav() {
+    this.sidenav.open();
+  }
+  closeSideNav() {
+    this.sidenav.close();
+  }
+}

@@ -19,18 +19,25 @@
       "dom"
     ],
     "paths": {
-      "device-mgmt": [
-        "dist/device-mgmt"
+      "device": [
+        "dist/device"
       ],
-      "device-mgmt/*": [
-        "dist/device-mgmt/*"
+      "device/*": [
+        "dist/device/*"
       ],
-      "patch-mgmt": [
-        "dist/patch-mgmt"
+      "pas": [
+        "dist/pas"
       ],
-      "patch-mgmt/*": [
-        "dist/patch-mgmt/*"
+      "pas/*": [
+        "dist/pas/*"
+      ],
+      "patch": [
+        "dist/patch"
+      ],
+      "patch/*": [
+        "dist/patch/*"
       ]
     }
   }
 }
+

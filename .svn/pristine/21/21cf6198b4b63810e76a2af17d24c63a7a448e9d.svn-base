@@ -1,0 +1,27 @@
+<ng-snotify></ng-snotify>
+<ngx-loading-bar [color]="'red'" [includeSpinner]="false" [height]="'3px'"></ngx-loading-bar>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar *ngIf="isLoggedIn" color="primary" class="example-toolbar mat-elevation-z5">
+      <button mat-icon-button aria-label="Toggle nav" (click)="mobileQuery.matches? snav.toggle() : toggleSideNav();"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">{{title}}</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav  *ngIf="isLoggedIn" [@openCloseSidenav]="isOpen ? 'open' : 'closed'" opened role="navigation" #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="mat-elevation-z5 mat-sidenav">
+        <mat-nav-list>
+                <app-menu-list-item *ngFor="let item of navItems" [item]="item" [isOpen]=isOpen></app-menu-list-item>
+
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content class="content-container" [@openCloseSidenavContent]="isOpen ? 'open' : 'closed'">
+         
+    <router-outlet></router-outlet>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+  </div>
+  

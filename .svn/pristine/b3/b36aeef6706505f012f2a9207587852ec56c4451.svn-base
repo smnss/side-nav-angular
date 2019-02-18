@@ -1,0 +1,17 @@
+import { Injectable } from '@angular/core';
+import { HttpService } from '../utilities/http/http.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class FeatureService {
+  public urlForLogin: string;
+
+  constructor(private httpService: HttpService) { }
+
+  getLogin(parameter) {
+    console.log('getLogin');
+    this.urlForLogin = 'http://localhost:90/security-web/json/security/login';
+    return this.httpService.create(this.urlForLogin , parameter);
+  }
+}

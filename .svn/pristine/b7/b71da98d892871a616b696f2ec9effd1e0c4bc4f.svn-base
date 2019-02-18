@@ -1,0 +1,43 @@
+example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+  background: red;
+}
+.mat-heading {
+  border-bottom: 2px solid #bdbdbd;
+  margin: 10px 0;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+}
+
+td,
+th {
+  width: 25%;
+}
+.example-button-row {
+  margin-bottom: 25px;
+}

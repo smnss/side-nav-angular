@@ -1,0 +1,95 @@
+
+ <ol class="breadcrumb">
+	<li class="breadcrumb-item"><b>User Facility</b></li>
+	<li class="breadcrumb-item active">User Facility</li>
+</ol>  
+
+<div class="row">
+	<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+		<div class="card mb-3">
+			<div class="card-header" style="font-weight: bold;">User
+				Facilities <div id="breadcrumb-facility"></div> </div> <div id="parentFacility"></div>
+			<div class="card-body">
+				<div class="custom-card card-body">
+					<div id="facility-content"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+		<div id="facility-device-content"></div>
+	</div>
+</div>
+
+<!-- <div class="card mb-3">
+	<div class="card-header" style="font-weight: bold;">Facility Devices</div>
+	<div class="card-body">
+		<div class="custom-card card-body">
+			<div id="device-content"></div>
+		</div>
+	</div>
+</div> -->
+
+<div class="modal fade" id="device-info-modal" tabindex="-1"
+	role="dialog" aria-labelledby="device-info-modal-label"
+	aria-hidden="true">
+	<div class="modal-dialog" role="document"
+		style="max-width: 60% !important;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="device-info-modal-label">Device
+					Information</h5>
+				<button class="close" type="button" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">X</span>
+				</button>
+			</div>
+
+			<div class="border">
+				<div class="card-body">
+					<div class="custom-card card-body" id="device-tabs"
+						style="font-size: 14px; font-family: calibri;">
+						<ul>
+							<li><a href="#device-basic-attributes-tab">Basic</a></li>
+							<li><a href="#device-advanced-attributes-tab">Advanced</a></li>
+						</ul>
+						<div id="device-basic-attributes-tab">
+							<table class="table table-bordered" id="device-basic-attributes-table"
+								width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div id="device-advanced-attributes-tab">
+							<table class="table table-bordered" id="device-adv-attributes-table"
+								width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									</tr>
+								</tbody>
+							</table>						
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>

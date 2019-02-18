@@ -1,0 +1,230 @@
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+      <!-- build:css(.) styles/vendor.css -->
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+      <!-- endbower -->
+      <!-- endbuild -->
+      <!-- build:css(.tmp) styles/main.css -->
+      <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/sb-admin-2.css">
+      <link rel="stylesheet" href="styles/timeline.css">
+      <link rel="stylesheet" href="styles/custom.css">
+	  <link rel="stylesheet" href="styles/device.css">
+      <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css">
+      <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
+      <link rel="stylesheet" href="bower_components/angularjs-toaster/toaster.min.css" type="text/css">
+      <link rel="stylesheet" href="js/jquery_datatable/jquery.dataTables.min.css" type="text/css">
+      <link rel="stylesheet" href="bower_components/dist/css/angular-datatables.min.css" type="text/css">
+      <link rel="stylesheet" href="styles\cron\jquery-cron.css" type="text/css">
+      <!--Charts releated libraries starts-->
+      <link rel="stylesheet" type="text/css" href="styles/charts/loader.css">
+      <!--Charts releated libraries Ends-->
+      <!-- endbuild -->
+      <!-- build:js(.) scripts/vendor.js -->
+      <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="js/jquery_datatable/jquery.dataTables.min.js"></script>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/angular-file-upload-shim/dist/angular-file-upload.min.js"></script>
+      <script src="bower_components/angular-file-upload-shim/dist/angular-file-upload-shim.min.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+      <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+      <script src="bower_components/angular-translate/dist/angular-translate.js"></script>
+      <script src="bower_components/underscore/underscore-min.js"></script>
+      <script src="bower_components/angularjs-toaster/toaster.min.js"></script>
+      <script src="bower_components/dist/angular-datatables.min.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+      <script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+      <script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+      <script src="js/angular-cookies.min.js"></script>
+      <script src="js/cron/jquery-cron.js"></script>
+      <script src="js/multiselect.js"></script>
+      <!--Charts releated libraries starts-->
+      <!--<script type="text/javascript" src="js/charts/jquery.min.js"></script>-->
+      <script src="js/charts/chartlibrary.js"></script>
+      <script src="js/charts/loader.js"></script>
+      <!--Charts releated libraries Ends-->
+      <!-- endbower -->
+      <!-- endbuild -->
+      <!-- build:js({.tmp,app}) scripts/scripts.js -->
+      <script src="scripts/app.js"></script>
+      <script src="js/sb-admin-2.js"></script>
+      <script src="scripts/controllers/addroutecontroller.js"></script>
+      <script src="scripts/controllers/editroutecontroller.js"></script>
+      <script src="scripts/controllers/listRouteController.js"></script>
+      <script src="scripts/controllers/historyController.js"></script>
+      <script src="scripts/controllers/rolloutlistcontroller.js"></script>
+      <script src="scripts/controllers/rolloutapprovalcontroller.js"></script>
+      <script src="scripts/controllers/addrolloutcontroller.js"></script>
+      <script src="scripts/controllers/addpatchcontroller.js"></script>
+      <script src="scripts/controllers/uploadpatchcontroller.js"></script>
+      <script src="scripts/controllers/devicemodulelistcontroller.js"></script>
+      <script src="scripts/controllers/loginController.js"></script>
+      <script src="scripts/controllers/dashboard/dashboardCntrl.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/companyManagementController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/addCompanyController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/passwordManagementController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/productAndServiceController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/roleAndPermissionController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/userManagementController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/addUserController.js"></script>
+      <script src="scripts/controllers/pasManagementControllers/modifyUserController.js"></script>
+      <script src="scripts/controllers/devicemanagement/userfacilitycontroller.js"></script>
+	  <script src="scripts/controllers/devicemanagement/devicecontroller.js"></script>
+	  <script src="scripts/controllers/devicemanagement/facilitycontroller.js"></script>
+	  <script src="scripts/controllers/devicemanagement/device-addcontroller.js"></script>
+	  <script src="scripts/controllers/devicemanagement/devicetype-addcontroller.js"></script> 
+	  <script src="scripts/controllers/devicemanagement/devicetypecontroller.js"></script> 
+      <script src="scripts/service/commonservice.js"></script>
+      <!--<script src="scripts/controllers/routelistcontroller.js"></script>-->
+      <!-- endbuild -->
+      <!-- Custom CSS -->
+      <!-- Custom Fonts -->
+      <!-- Morris Charts CSS -->
+      <!-- <link href="styles/morrisjs/morris.css" rel="stylesheet"> -->
+   </head>
+   <body>
+      <toaster-container></toaster-container>
+      <div ng-app="IntergrationService" ng-controller="baseCtrl">
+         <div id="wrapper" ng-class="{'custom_bg': !loadLogin}">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top custom_nav" role="navigation" style="margin-bottom: 0">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="index.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PAS - ALL IN ONE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+               </div>
+               <!-- /.navbar-header -->
+               <ul class="nav navbar-top-links navbar-right" ng-show="loadLogin == false">
+                  <li><a><i class="fa fa-fw fa-user"></i> Welcome, admin @ hcl.com</a> </li>
+                  <li class="cursor"><a ng-click="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a></li>
+               </ul>
+               <div class="navbar-default sidebar" role="navigation" ng-show="loadLogin == false">
+                  <div class="sidebar-nav navbar-collapse">
+                     <ul class="nav in" id="side-menu">
+                        <li class="sidebar-search" style="padding-left: 25px">
+                           <div class="input-group custom-search-form">
+                              <input id="searchText" type="text" class="form-control" placeholder="Search...">
+                              <!--  <span class="input-group-btn">
+                                 <button class="btn btn-default" type="button">
+                                 <i class="fa fa-search"></i>
+                                  </button>
+                                 </span> -->
+                           </div>
+                        </li>
+                        <li ui-sref-active="active">
+                           <a ui-sref="dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li >
+                           <a href="" ng-click="check(1)"><i class="fa fa-lock fa-fw"></i> Administration<span
+                              class="fa arrow"></span></a>
+                           <ul class="customSearch nav nav-second-level sub-menu" collapse="collapseVar ==1">
+                              <li ui-sref-active="active">
+                                 <a ui-sref="companyManagement"><i class="fa fa-angle-double-right"></i>Company Management</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="userManagement"><i class="fa fa-angle-double-right"></i>User Management</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="maintainance"><i class="fa fa-angle-double-right"></i>Role and Permissions Management</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="maintainance"><i class="fa fa-angle-double-right"></i>Password Management</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="maintainance"><i class="fa fa-angle-double-right"></i>Product and service Management</a>
+                              </li>
+                           </ul>
+                           <!-- /.nav-second-level -->
+                        </li>
+                        <li >
+                           <a href="" ng-click="check(1)"><i class="fa fa-edit fa-fw"></i> Patch Management<span
+                              class="fa arrow"></span></a>
+                           <ul class="customSearch nav nav-second-level sub-menu" collapse="collapseVar ==1">
+                              <li ui-sref-active="active">
+                                 <a ui-sref="routelist"><i class="fa fa-angle-double-right"></i>Manage Patch</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="historylist"><i class="fa fa-angle-double-right"></i>Patch History</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="rolloutlist"><i class="fa fa-angle-double-right"></i>Rollout</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="rolloutapproval"><i class="fa fa-angle-double-right"></i>Rollout Approval</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="devicemodulelist"><i class="fa fa-angle-double-right"></i>Device Module</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a href="{{deviceUrl}}" target="_blank"><i class="fa fa-angle-double-right" ></i>Device Management</a>
+                              </li>
+                              <li ui-sref-active="active">
+                                 <a ui-sref="settings"><i class="fa fa-angle-double-right"></i>Settings</a>
+                              </li>
+                           </ul>
+                           <!-- /.nav-second-level -->
+                        </li>
+                        <li >
+                                <a href="" ng-click="check(1)"><i class="fa fa-mobile fa-fw"></i>Device Management<span
+                                class="fa arrow"></span></a>
+                                <ul class="customSearch nav nav-second-level sub-menu" collapse="collapseVar ==1">
+                                    <li ui-sref-active="active">
+                                        <a ui-sref="userfacility"><i class="fa fa-angle-double-right"></i>User Facility</a>
+                                    </li>
+                                    <li ui-sref-active="active">
+                                        <a ui-sref="devicetype"><i class="fa fa-angle-double-right"></i>Device Type</a>
+                                    </li>
+                                     <li ui-sref-active="active">
+                                        <a ui-sref="devices"><i class="fa fa-angle-double-right"></i>Devices</a>
+                                    </li>
+                                    <li ui-sref-active="active">
+                                        <a ui-sref="facility"><i class="fa fa-angle-double-right"></i>Facility</a>
+                                    </li>
+                                    <li ui-sref-active="active">
+                                        <a ui-sref="facilitymapping"><i class="fa fa-angle-double-right"></i>Facility Mapping</a>
+                                    </li>
+                                   
+
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                        <li >
+                           <a href="" ng-click="check(1)"><i class="fa fa-hdd-o fa-fw"></i>Backup and Restore<span
+                              class="fa arrow"></span></a>
+                           <ul class="customSearch nav nav-second-level sub-menu" collapse="collapseVar ==1">
+                              <li ui-sref-active="active">
+                                 <a ui-sref="routelist"><i class="fa fa-angle-double-right"></i>Backup Management</a>
+                              </li>
+                           </ul>
+                           <!-- /.nav-second-level -->
+                        </li>
+                     </ul>
+                  </div>
+                  <!-- /.sidebar-collapse -->
+               </div>
+            </nav>
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+            <div id="page-wrapper" class='pageContent'  ng-class="{ 'removeClassnonlogin': loadLogin} ">
+               <div ui-view></div>
+            </div>
+            <!-- /#page-wrapper -->
+         </div>
+      </div>
+   </body>
+</html>

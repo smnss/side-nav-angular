@@ -1,0 +1,17 @@
+.bg {
+background: url('https://backgroundcheckall.com/wp-content/uploads/2018/10/background-images-for-professional-websites-4.jpg')no-repeat; width: 100%; height: 100%;
+}
+
+.form-Container {
+border: 1px solid;
+padding:30px 50px;
+margin-top: 10vh;
+margin-bottom: 10vh;
+-webkit-box-shadow: -1px 0px 13px 9px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 0px 13px 9px rgba(0,0,0,0.75);
+box-shadow: -1px 0px 13px 9px rgba(0,0,0,0.75);
+}
+
+.example-full-width {
+  width: 100%;
+}

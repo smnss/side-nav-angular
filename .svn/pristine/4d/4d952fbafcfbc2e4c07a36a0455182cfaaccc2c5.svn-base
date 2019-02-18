@@ -1,0 +1,39 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './features/login/login.component';
+import { ResetPasswordComponent } from './features/reset-password/reset-password.component';
+import { AuthGuard } from './utilities/guard/auth.guard';
+
+const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'resetPassword',
+    component: ResetPasswordComponent,
+  },
+  {
+    path: 'home',
+    canActivate: [AuthGuard],
+    component: DashboardComponent,
+  },
+  {
+    path: 'device-mgmt',
+    children: [
+      {
+        path: '',
+        loadChildren:
+          'app/features/device-mgmt/device.module#DeviceModule',
+        //  features\device-mgmt\device.module.ts
+      },
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+})
+export class AppRoutingModule {}
